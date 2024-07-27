@@ -1,7 +1,7 @@
 const Footer = () => {
 	return (
 		<footer>
-			<p>© 2024 My Smart Home - Switch DEV - Grupo 3</p>
+			<p>© 2024 FABAMAQ Challenge develop by Mariana Pereira</p>
 		</footer>
 	);
 };

@@ -1,4 +1,4 @@
-import {House} from "@phosphor-icons/react";
+import {UserCircle} from "@phosphor-icons/react";
 import PropTypes from "prop-types";
 import {useEffect} from "react";
 
@@ -15,7 +15,7 @@ const TitleHeading = ({title, subtitle = undefined}) => {
     return (
         <>
             {title === "Welcome," && (
-                <House weight="duotone" color="var(--primary-color)" size={30}/>
+                <UserCircle weight="duotone" color="var(--primary-color)" size={30}/>
             )}
             <h1 className={subtitle ? "" : "underline"}>{title}</h1>
             {subtitle && <h1 className="underline">{subtitle}</h1>}

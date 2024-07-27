@@ -2,7 +2,7 @@ import {createContext, useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {fetchUsers} from '../services/UserService';
 
-export const HomeContext = createContext(null);
+export const HomePageContext = createContext(null);
 
 export const HomeProvider = ({children}) => {
     const [users, setUsers] = useState([]);
@@ -24,14 +24,14 @@ export const HomeProvider = ({children}) => {
     };
 
     return (
-        <HomeContext.Provider value={{users, currentUser, getUserById}}>
+        <HomePageContext.Provider value={{users, currentUser, getUserById}}>
             {children}
-        </HomeContext.Provider>
+        </HomePageContext.Provider>
     );
 }
 
 export function useHome() {
-    return useContext(HomeContext);
+    return useContext(HomePageContext);
 }
 
 HomeProvider.propTypes = {

@@ -1,5 +1,5 @@
 export function createUser(user) {
-    return fetch('http://localhost:3001/users', {
+    return fetch('https://gorest.co.in/public/v2/users', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -8,18 +8,21 @@ export function createUser(user) {
     });
 }
 export function deleteUser(userId) {
-    return fetch(`http://localhost:3001/users/${userId}`, {
+    return fetch(`https://gorest.co.in/public/v2/users/${userId}`, {
         method: 'DELETE',
     });
 }
 export function getUser(userId) {
-    return fetch(`http://localhost:3001/users/${userId}`);
+    return fetch(`https://gorest.co.in/public/v2/users/${userId}`, {
+        method: 'GET',    });
 }
 export function getUsers() {
-    return fetch('http://localhost:3001/users');
+    return fetch('https://gorest.co.in/public/v2/users',{
+    method: 'GET',
+    });
 }
 export function updateUser(userId, user) {
-    return fetch(`http://localhost:3001/users/${userId}`, {
+    return fetch(`https://gorest.co.in/public/v2/users/${userId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
