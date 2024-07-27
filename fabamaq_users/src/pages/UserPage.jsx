@@ -56,7 +56,7 @@ const UserPage = () => {
     const handleDelete = async () => {
         try {
             await deleteUser(userId);
-            navigate('/users');
+            navigate('/');
         } catch (error) {
             console.error('Error deleting user:', error);
         }
