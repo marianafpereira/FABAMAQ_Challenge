@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { handleSubmit } from '../services/NewUserService';
 
 const NewUserPage = () => {
@@ -9,6 +10,7 @@ const NewUserPage = () => {
         status: 'active'
     });
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,7 +23,7 @@ const NewUserPage = () => {
     return (
         <div className="new-user-page">
             <h2>Create New User</h2>
-            <form onSubmit={(e) => handleSubmit(e, user, setUser, setMessage)}>
+            <form onSubmit={(e) => handleSubmit(e, user, setUser, setMessage, navigate)}>
                 <div>
                     <label>Name:</label>
                     <input

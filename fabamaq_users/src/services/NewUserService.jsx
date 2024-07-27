@@ -1,6 +1,6 @@
-import {API_KEY} from "./urls.js";
+import { API_KEY } from './urls.js';
 
-export const handleSubmit = async (e, user, setUser, setMessage) => {
+export const handleSubmit = async (e, user, setUser, setMessage, navigate) => {
     e.preventDefault();
     try {
         const response = await fetch('https://gorest.co.in/public/v2/users', {
@@ -14,6 +14,7 @@ export const handleSubmit = async (e, user, setUser, setMessage) => {
         if (response.ok) {
             setMessage('User created successfully!');
             setUser({ name: '', email: '', gender: '', status: 'active' });
+            navigate('/');
         } else {
             const errorData = await response.json();
             setMessage(`Failed to create user: ${errorData.map(err => `${err.field}: ${err.message}`).join(', ')}`);
