@@ -3,6 +3,7 @@ import { getUser, updateUser, deleteUser } from '../services/UserService';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ErrorPage from './Status/ErrorPage';
 import { getPosts } from "../services/PostsService.jsx";
+import Loading from '../components/Loading/Loading';
 
 const UserPage = () => {
     const { userId } = useParams();
@@ -10,7 +11,8 @@ const UserPage = () => {
     const [error, setError] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({ name: '', email: '', gender: '' });
-    const [postId, setPostId] = useState(null); // Add state for postId
+    const [postId, setPostId] = useState(null);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,7 +24,7 @@ const UserPage = () => {
                     setFormData({ name: userData.name, email: userData.email, gender: userData.gender });
                     const posts = await getPosts(userId);
                     if (posts.length > 0) {
-                        setPostId(posts[0].id); // Assuming you want the first post's ID
+                        setPostId(posts[0].id);
                     }
                 } catch (error) {
                     if (error.response && error.response.status === 404) {
@@ -30,12 +32,15 @@ const UserPage = () => {
                     } else {
                         setError('Error fetching user');
                     }
+                } finally {
+                    setLoading(false);
                 }
             };
 
             fetchUser();
         } else {
             setError('User ID is undefined');
+            setLoading(false);
         }
     }, [userId]);
 
@@ -67,6 +72,10 @@ const UserPage = () => {
             console.error('Error deleting user:', error);
         }
     };
+
+    if (loading) {
+        return <Loading />;
+    }
 
     if (error) {
         return <ErrorPage customError={error} />;
@@ -105,10 +114,7 @@ const UserPage = () => {
             )}
             <button onClick={handleDelete}>Delete Account</button>
             <div>
-                {postId && <Link to={`/posts/${postId}/comments`}>View Your Comments</Link>}
-            </div>
-            <div>
-                <Link to={`/user/${userId}/posts`}>View Your Posts</Link>
+                <Link to={`/user/${userId}/posts-comments`}>View Your Posts and Comments</Link>
             </div>
         </div>
     );

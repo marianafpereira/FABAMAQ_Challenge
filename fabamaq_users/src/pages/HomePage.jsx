@@ -7,9 +7,11 @@ import SectionHeading from '../components/Headings/SectionHeading';
 import './HomePage.css';
 import { getUserBySearchTerm } from "../services/UserService.jsx";
 import UserList from "../components/UserList/UserList.jsx";
+import Loading from '../components/Loading/Loading';
 
 const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSearchChange = (event) => {
@@ -18,6 +20,7 @@ const HomePage = () => {
 
     const handleSearchSubmit = async () => {
         if (searchTerm) {
+            setLoading(true);
             try {
                 const user = await getUserBySearchTerm(searchTerm);
                 if (user && user.id) {
@@ -27,9 +30,15 @@ const HomePage = () => {
                 }
             } catch (error) {
                 console.error('Error fetching user by search term:', error);
+            } finally {
+                setLoading(false);
             }
         }
     };
+
+    if (loading) {
+        return <Loading />;
+    }
 
     return (
         <BaseLayout pageTitle="Welcome to ">
