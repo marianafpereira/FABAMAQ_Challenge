@@ -4,6 +4,8 @@ import { getPosts } from '../services/PostsService';
 import { getComments } from '../services/CommentsService';
 import { getUser } from '../services/UserService';
 import Loading from '../components/Loading/Loading';
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
+import UserStatistics from '../components/UserStatistics/UserStatistics';
 
 const UserPostsCommentsPage = () => {
     const { userId } = useParams();
@@ -11,6 +13,7 @@ const UserPostsCommentsPage = () => {
     const [posts, setPosts] = useState([]);
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -19,6 +22,7 @@ const UserPostsCommentsPage = () => {
                 setUser(userData);
             } catch (error) {
                 console.error('Error fetching user data:', error);
+                setError(error.message);
             }
         };
 
@@ -31,6 +35,7 @@ const UserPostsCommentsPage = () => {
                 setComments(commentsData.flat());
             } catch (error) {
                 console.error('Error fetching posts and comments:', error);
+                setError(error.message);
             } finally {
                 setLoading(false);
             }
@@ -44,8 +49,13 @@ const UserPostsCommentsPage = () => {
         return <Loading />;
     }
 
+    if (error) {
+        return <ErrorPage customError={error} />;
+    }
+
     return (
         <div>
+            <Breadcrumb />
             <h1>{user ? `${user.name}'s Posts and Comments` : 'User Posts and Comments'}</h1>
             <div>
                 <h2>Posts</h2>
@@ -75,8 +85,8 @@ const UserPostsCommentsPage = () => {
                 ) : (
                     <p>There's no data for this field.</p>
                 )}
-                <Link to={`/user/${userId}/statistics`}>View Posts and Comments Statistics</Link>
             </div>
+            <UserStatistics userId={userId} setError={setError} />
         </div>
     );
 };

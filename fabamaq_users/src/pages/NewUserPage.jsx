@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleSubmit } from '../services/NewUserService';
 import ErrorPage from './Status/ErrorPage';
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 
 const NewUserPage = () => {
     const [user, setUser] = useState({
@@ -38,6 +39,7 @@ const NewUserPage = () => {
 
     return (
         <div className="new-user-page">
+            <Breadcrumb />
             <h2>Create New User</h2>
             <form onSubmit={handleFormSubmit}>
                 <div>

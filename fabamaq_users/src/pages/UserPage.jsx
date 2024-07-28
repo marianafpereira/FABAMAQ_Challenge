@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import ErrorPage from './Status/ErrorPage';
 import { getPosts } from "../services/PostsService.jsx";
 import Loading from '../components/Loading/Loading';
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 
 const UserPage = () => {
     const { userId } = useParams();
@@ -89,6 +90,7 @@ const UserPage = () => {
 
     return (
         <div>
+            <Breadcrumb />
             <h1>{user.name} details</h1>
             {isEditing ? (
                 <form onSubmit={handleFormSubmit}>
