@@ -1,5 +1,5 @@
 import axios from "axios";
-import {API_KEY} from "./urls.js";
+import {API_KEY} from "../data/urls.js";
 
 export const getComments = async (postId) => {
     try {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getUser, updateUser, deleteUser } from '../services/UserService';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import ErrorPage from './Status/ErrorPage';
+import { getPosts } from "../services/PostsService.jsx";
 
 const UserPage = () => {
     const { userId } = useParams();
@@ -9,6 +10,7 @@ const UserPage = () => {
     const [error, setError] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [formData, setFormData] = useState({ name: '', email: '', gender: '' });
+    const [postId, setPostId] = useState(null); // Add state for postId
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,6 +20,10 @@ const UserPage = () => {
                     const userData = await getUser(userId);
                     setUser(userData);
                     setFormData({ name: userData.name, email: userData.email, gender: userData.gender });
+                    const posts = await getPosts(userId);
+                    if (posts.length > 0) {
+                        setPostId(posts[0].id); // Assuming you want the first post's ID
+                    }
                 } catch (error) {
                     if (error.response && error.response.status === 404) {
                         setError('User not found');
@@ -99,10 +105,10 @@ const UserPage = () => {
             )}
             <button onClick={handleDelete}>Delete Account</button>
             <div>
-                <Link to={`/users/comments`}>View Your Comments</Link>
+                {postId && <Link to={`/posts/${postId}/comments`}>View Your Comments</Link>}
             </div>
             <div>
-                <Link to={`/users/posts`}>View Your Posts</Link>
+                <Link to={`/user/${userId}/posts`}>View Your Posts</Link>
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import { API_KEY } from './urls.js';
+import { API_KEY } from '../data/urls.js';
 
 export const handleSubmit = async (e, user, setUser, setMessage, navigate) => {
     e.preventDefault();
