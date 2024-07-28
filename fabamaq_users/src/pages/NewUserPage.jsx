@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleSubmit } from '../services/NewUserService';
+import ErrorPage from './Status/ErrorPage';
 
 const NewUserPage = () => {
     const [user, setUser] = useState({
@@ -10,6 +11,7 @@ const NewUserPage = () => {
         status: 'active'
     });
     const [message, setMessage] = useState('');
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -20,10 +22,24 @@ const NewUserPage = () => {
         }));
     };
 
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await handleSubmit(e, user, setUser, setMessage, navigate);
+        } catch (error) {
+            console.error('Error creating user:', error);
+            setError(error.message);
+        }
+    };
+
+    if (error) {
+        return <ErrorPage customError={error} />;
+    }
+
     return (
         <div className="new-user-page">
             <h2>Create New User</h2>
-            <form onSubmit={(e) => handleSubmit(e, user, setUser, setMessage, navigate)}>
+            <form onSubmit={handleFormSubmit}>
                 <div>
                     <label>Name:</label>
                     <input

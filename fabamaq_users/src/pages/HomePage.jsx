@@ -8,10 +8,12 @@ import './HomePage.css';
 import { getUserBySearchTerm } from "../services/UserService.jsx";
 import UserList from "../components/UserList/UserList.jsx";
 import Loading from '../components/Loading/Loading';
+import ErrorPage from './Status/ErrorPage';
 
 const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const handleSearchChange = (event) => {
@@ -30,6 +32,7 @@ const HomePage = () => {
                 }
             } catch (error) {
                 console.error('Error fetching user by search term:', error);
+                setError(error.message);
             } finally {
                 setLoading(false);
             }
@@ -38,6 +41,10 @@ const HomePage = () => {
 
     if (loading) {
         return <Loading />;
+    }
+
+    if (error) {
+        return <ErrorPage customError={error} />;
     }
 
     return (

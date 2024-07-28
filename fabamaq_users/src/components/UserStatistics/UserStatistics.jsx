@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getPostsStatistics, getCommentsStatistics } from '../../services/GraphQLService';
 import Loading from '../Loading/Loading';
 
-const UserStatistics = ({ userId }) => {
+const UserStatistics = ({ userId, setError }) => {
     const [postsCount, setPostsCount] = useState(0);
     const [commentsCount, setCommentsCount] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -21,13 +21,14 @@ const UserStatistics = ({ userId }) => {
                 setCommentsCount(totalCommentsCount);
             } catch (error) {
                 console.error('Error fetching user statistics:', error);
+                setError(error.message);
             } finally {
                 setLoading(false);
             }
         };
 
         fetchStatistics();
-    }, [userId]);
+    }, [userId, setError]);
 
     if (loading) {
         return <Loading />;

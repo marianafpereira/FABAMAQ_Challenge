@@ -61,6 +61,7 @@ const UserPage = () => {
             setIsEditing(false);
         } catch (error) {
             console.error('Error updating user:', error);
+            setError(error.message);
         }
     };
 
@@ -70,6 +71,7 @@ const UserPage = () => {
             navigate('/');
         } catch (error) {
             console.error('Error deleting user:', error);
+            setError(error.message);
         }
     };
 
