@@ -11,10 +11,14 @@ const UserStatistics = ({ userId }) => {
         const fetchStatistics = async () => {
             try {
                 const postsData = await getPostsStatistics(userId);
-                setPostsCount(postsData.data.user.posts.totalCount);
+                setPostsCount(postsData.user.posts.totalCount);
 
-                const commentsData = await getCommentsStatistics(userId);
-                setCommentsCount(commentsData.data.user.comments.totalCount);
+                let totalCommentsCount = 0;
+                for (const post of postsData.user.posts.nodes) {
+                    const commentsData = await getCommentsStatistics(post.id);
+                    totalCommentsCount += commentsData.post.comments.totalCount;
+                }
+                setCommentsCount(totalCommentsCount);
             } catch (error) {
                 console.error('Error fetching user statistics:', error);
             } finally {

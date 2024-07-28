@@ -16,7 +16,10 @@ const fetchGraphQL = async (query) => {
                 }
             }
         );
-        return response.data;
+        if (response.data.errors) {
+            throw new Error(response.data.errors.map(error => error.message).join(', '));
+        }
+        return response.data.data;
     } catch (error) {
         console.error('Error fetching GraphQL data:', error);
         throw error;
@@ -41,10 +44,10 @@ export const getPostsStatistics = async (userId) => {
     return fetchGraphQL(query);
 };
 
-export const getCommentsStatistics = async (userId) => {
+export const getCommentsStatistics = async (postId) => {
     const query = `
         query {
-            user(id: ${userId}) {
+            post(id: ${postId}) {
                 comments {
                     totalCount
                     nodes {
