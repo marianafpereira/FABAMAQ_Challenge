@@ -6,9 +6,9 @@
     --spacing: 1.5rem;
     --custom-underline-width: 23%;
 
-    --primary-color: #2049b2;
-    --secondary-color: #5883e1;
-    --tertiary-color: #79b2f5;
+    --primary-color: #4c2ac5;
+    --secondary-color: #7f58e1;
+    --tertiary-color: #8179f5;
     --red-color: rgb(209, 33, 33);
 
     --background-color: #f7f7f7;
@@ -51,9 +51,9 @@ a {
 }
 .search-container {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    height: 20vh;
+    height: auto;
     margin-bottom: 1%;
 }
 .register-link {

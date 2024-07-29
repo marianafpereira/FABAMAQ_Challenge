@@ -6,9 +6,9 @@
     --spacing: 1.5rem;
     --custom-underline-width: 23%;
 
-    --primary-color: #2049b2;
-    --secondary-color: #5883e1;
-    --tertiary-color: #79b2f5;
+    --primary-color: #3c1c87;
+    --secondary-color: #7158e1;
+    --tertiary-color: #7e6ee1;
     --red-color: rgb(209, 33, 33);
 
     --background-color: #f7f7f7;
@@ -24,7 +24,7 @@
 html {
     font: var(--font-regular) var(--font-size) / 1.5 var(--font-family);
     color: var(--text-color);
-    background-color: var(--background-color);
+    background-color: transparent;
     position: relative;
 }
 

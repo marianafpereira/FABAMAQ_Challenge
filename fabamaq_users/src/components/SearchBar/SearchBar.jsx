@@ -3,7 +3,7 @@ import './SearchBar.css';
 
 const SearchBar = ({ searchTerm, onSearchChange, onSearchSubmit, handleKeyDown }) => {
     return (
-        <div>
+        <div className="search-bar">
             <input
                 type="text"
                 placeholder="Search users..."

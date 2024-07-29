@@ -1,14 +1,15 @@
-/* the underline on My Smart HomePage */
 .underline,
 .sideline {
     position: relative;
+    display: inline-block;
+
 }
 
 .underline::before {
     content: "";
     position: absolute;
-    top: 83%;
-    width: var(--custom-underline-width, 23%);
+    top: 88%;
+    width: var(--custom-underline-width, 20%);
     left: 1ch;
     height: 10px;
     border-radius: var(--border-radius);
@@ -22,7 +23,7 @@
 
 @media screen and (max-width: 500px) {
     .underline::before {
-        width: var(--custom-underline-width, 53%);
+        width: var(--custom-underline-width, 40%);
     }
 }
 
