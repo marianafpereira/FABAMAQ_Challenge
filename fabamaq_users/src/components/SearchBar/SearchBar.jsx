@@ -1,4 +1,5 @@
 import React from 'react';
+import './SearchBar.css';
 
 const SearchBar = ({ searchTerm, onSearchChange, onSearchSubmit, handleKeyDown }) => {
     return (
@@ -9,9 +10,9 @@ const SearchBar = ({ searchTerm, onSearchChange, onSearchSubmit, handleKeyDown }
                 value={searchTerm}
                 onChange={onSearchChange}
                 onKeyDown={handleKeyDown}
-                style={{ width: '1000px', padding: '15px' }}
+                className="search-input"
             />
-            <button onClick={onSearchSubmit} style={{ marginLeft: '10px' }}>
+            <button onClick={onSearchSubmit} className="search-button">
                 Search
             </button>
         </div>

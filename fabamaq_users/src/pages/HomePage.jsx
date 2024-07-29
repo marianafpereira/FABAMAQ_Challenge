@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SearchBar from '../components/SearchBar';
+import SearchBar from '../components/SearchBar/SearchBar.jsx';
 import BaseLayout from '../components/BaseLayout/BaseLayout';
 import Footer from '../components/Footer/Footer';
 import SectionHeading from '../components/Headings/SectionHeading';
-import './HomePage.css';
+import '../styles/HomePage.css';
+import '../styles/index.css';
 import { getUserBySearchTerm } from "../services/UserService.jsx";
 import UserList from "../components/UserList/UserList.jsx";
 import Loading from '../components/Loading/Loading';
 import ErrorPage from './Status/ErrorPage';
+import Wave from "react-wavify";
 
 const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -48,12 +50,15 @@ const HomePage = () => {
     }
 
     return (
-        <BaseLayout pageTitle="Welcome to ">
+        <BaseLayout pageTitle="Welcome to " subtitle="FABAMAQ Challenge">
             <div className="home-page">
-                <SectionHeading text="FABAMAQ Challenge"/>
+                <SectionHeading text="User List"/>
                 <div className="search-container">
-                    <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange}
-                               onSearchSubmit={handleSearchSubmit}/>
+                    <SearchBar
+                        searchTerm={searchTerm}
+                        onSearchChange={handleSearchChange}
+                        onSearchSubmit={handleSearchSubmit}
+                    />
                 </div>
                 <UserList searchTerm={searchTerm}/>
                 <p className="register-link">
