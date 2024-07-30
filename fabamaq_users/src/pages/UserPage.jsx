@@ -8,6 +8,7 @@ import TitleHeading from "../components/Headings/TitleHeading.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/UserPage.css';
+import { GenderIntersex, EnvelopeSimple, IdentificationCard } from "@phosphor-icons/react";
 
 const UserPage = () => {
     const { userId } = useParams();
@@ -142,19 +143,19 @@ const UserPage = () => {
             <div className="user-details-container">
                 {isEditing ? (
                     <>
-                        <p><strong>Name:</strong> <input type="text" name="name" value={editedUser.name} onChange={handleChange} /></p>
+                        <p><IdentificationCard weight="duotone" color="var(--primary-color)" size={40} /> <strong>Name:</strong> <input type="text" name="name" value={editedUser.name} onChange={handleChange} /></p>
                         <hr className="separator" />
-                        <p><strong>Gender:</strong> <input type="text" name="gender" value={editedUser.gender} onChange={handleChange} /></p>
+                        <p><GenderIntersex weight="duotone" color="var(--primary-color)" size={40} /> <strong>Gender:</strong> <input type="text" name="gender" value={editedUser.gender} onChange={handleChange} /></p>
                         <hr className="separator" />
-                        <p><strong>Email:</strong> <input type="email" name="email" value={editedUser.email} onChange={handleChange} /></p>
+                        <p><EnvelopeSimple weight="duotone" color="var(--primary-color)" size={40} /> <strong>Email:</strong> <input type="email" name="email" value={editedUser.email} onChange={handleChange} /></p>
                     </>
                 ) : (
                     <>
-                        <p className="user-detail"><strong>Name:</strong> {user.name}</p>
+                        <p className="user-detail"><IdentificationCard weight="duotone" color="var(--primary-color)" size={24} /> <strong>Name:</strong> {user.name}</p>
                         <hr className="separator" />
-                        <p className="user-detail"><strong>Gender:</strong> {user.gender}</p>
+                        <p className="user-detail"><GenderIntersex weight="duotone" color="var(--primary-color)" size={24} /> <strong>Gender:</strong> {user.gender}</p>
                         <hr className="separator" />
-                        <p className="user-detail"><strong>Email:</strong> {user.email}</p>
+                        <p className="user-detail"><EnvelopeSimple weight="duotone" color="var(--primary-color)" size={24} /> <strong>Email:</strong> {user.email}</p>
                     </>
                 )}
                 <div className="view-posts-comments">
