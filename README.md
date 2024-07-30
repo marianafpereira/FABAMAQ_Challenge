@@ -124,7 +124,7 @@ Thank you for reviewing my application. If you have any questions, please feel f
     - Displays loading spinner while fetching data.
     - Handles and displays errors if data fetching fails.
 
-### Status/ErrorPage.jsx
+### ErrorPage.jsx
 - **Purpose**: To display an error message when an error occurs.
 - **Components Used**: Warning icon from `@phosphor-icons/react`.
 - **Functionality**:
