@@ -143,14 +143,18 @@ const UserPage = () => {
                 {isEditing ? (
                     <>
                         <p><strong>Name:</strong> <input type="text" name="name" value={editedUser.name} onChange={handleChange} /></p>
+                        <hr className="separator" />
                         <p><strong>Gender:</strong> <input type="text" name="gender" value={editedUser.gender} onChange={handleChange} /></p>
+                        <hr className="separator" />
                         <p><strong>Email:</strong> <input type="email" name="email" value={editedUser.email} onChange={handleChange} /></p>
                     </>
                 ) : (
                     <>
-                        <p><strong>Name:</strong> {user.name}</p>
-                        <p><strong>Gender:</strong> {user.gender}</p>
-                        <p><strong>Email:</strong> {user.email}</p>
+                        <p className="user-detail"><strong>Name:</strong> {user.name}</p>
+                        <hr className="separator" />
+                        <p className="user-detail"><strong>Gender:</strong> {user.gender}</p>
+                        <hr className="separator" />
+                        <p className="user-detail"><strong>Email:</strong> {user.email}</p>
                     </>
                 )}
                 <div className="view-posts-comments">

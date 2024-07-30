@@ -1,3 +1,6 @@
+:root {
+    --primary-color-rgb: 0, 123, 255;
+}
 .user-details-container {
     background-color: var(--box-color);
     border-radius: var(--border-radius);
@@ -129,4 +132,13 @@
     width: 0.25rem;
     height: 100%;
     background-color: var(--primary-color);
+}
+.user-detail {
+    font-size: 1.5rem;
+}
+
+.separator {
+    border: none;
+    border-top: 1px solid var(--primary-color);
+    margin: 1rem 0;
 }
