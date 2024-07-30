@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleSubmit } from '../services/NewUserService';
-import ErrorPage from './Status/ErrorPage';
-import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
+import Footer from '../components/Footer/Footer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../styles/NewUserPage.css';
 
 const NewUserPage = () => {
     const [user, setUser] = useState({
@@ -11,8 +13,6 @@ const NewUserPage = () => {
         gender: '',
         status: 'active'
     });
-    const [message, setMessage] = useState('');
-    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -26,58 +26,86 @@ const NewUserPage = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            await handleSubmit(e, user, setUser, setMessage, navigate);
+            await handleSubmit(e, user, setUser, navigate);
+            toast.success('User has been added', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                style: { backgroundColor: 'green' }
+            });
+            setTimeout(() => {
+                navigate('/');
+            }, 5000);
         } catch (error) {
             console.error('Error creating user:', error);
-            setError(error.message);
+            toast.error('Error creating user: ' + error.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                style: { backgroundColor: 'red' }
+            });
         }
     };
 
-    if (error) {
-        return <ErrorPage customError={error} />;
-    }
-
     return (
-        <div className="new-user-page">
-            <Breadcrumb />
-            <h2>Create New User</h2>
-            <form onSubmit={handleFormSubmit}>
-                <div>
-                    <label>Name:</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={user.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={user.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Gender:</label>
-                    <select
-                        name="gender"
-                        value={user.gender}
-                        onChange={handleChange}
-                        required
-                    >
-                        <option value="">Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-                <button type="submit">Create User</button>
-            </form>
-            {message && <p>{message}</p>}
+        <div>
+            <div className="breadcrumbs">
+                <a href="/">Home</a> &gt; Create New User
+            </div>
+            <div className="user-details-title">
+                <h1>Create New User</h1>
+                <div className="thick-underline"></div>
+            </div>
+            <div className="user-details-container">
+                <form onSubmit={handleFormSubmit}>
+                    <div>
+                        <label>Name:</label>
+                        <input
+                            type="text"
+                            name="name"
+                            value={user.name}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Email:</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={user.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Gender:</label>
+                        <select
+                            name="gender"
+                            value={user.gender}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <button type="submit">Create User</button>
+                </form>
+            </div>
+            <Footer />
+            <ToastContainer />
         </div>
     );
 };

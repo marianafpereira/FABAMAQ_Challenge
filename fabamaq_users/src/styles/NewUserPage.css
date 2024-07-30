@@ -1,0 +1,115 @@
+.user-details-container {
+    background-color: var(--box-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.user-details-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 4rem;
+    margin-top: 6rem;
+    position: relative;
+}
+
+.user-details-title h1 {
+    font-size: 3rem;
+    margin-top: 2rem;
+}
+
+.user-details-container form button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #5e1be3;
+    background-color: transparent;
+    color: #5521da;
+    cursor: pointer;
+}
+
+.user-details-container form button:hover {
+    background-color: #ffffff;
+    color: #7f58e1;
+}
+
+.thick-underline {
+    width: var(--custom-underline-width);
+    height: 0.5rem;
+    background-color: var(--primary-color);
+    margin-top: 0.5rem;
+    border-radius: 50px;
+}
+
+.subtitle {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.user-details-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.user-details-buttons button {
+    font-size: 1.50rem;
+    padding: 0.5rem 1rem;
+}
+
+.view-posts-comments {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.breadcrumbs {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.breadcrumbs a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 1rem;
+    width: 100%;
+    background-color: transparent;
+}
+
+.footer p {
+    font-weight: bold;
+}
+
+.toast-container {
+    font-family: var(--font-family), sans-serif;
+}
+
+.leaflet-container {
+    height: 45vh;
+    width: 45vh;
+}
