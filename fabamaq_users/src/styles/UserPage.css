@@ -1,21 +1,45 @@
-.user-page {
+/* UserPage.css */
+.user-details-container {
+    background-color: var(--box-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
     padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
 }
 
-.user-form, .user-details {
+.user-details-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.user-details-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.view-posts-comments {
+    display: flex;
+    justify-content: center;
     margin-top: 1rem;
 }
 
-.form-group {
-    margin-bottom: 5rem;
+.breadcrumbs {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
-.button-group {
-    display: flex;
-    gap: 4rem;
-    margin-top: 4rem;
+.breadcrumbs a {
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
-.posts-link {
-    margin-top: 4rem;
+.breadcrumbs a:hover {
+    text-decoration: underline;
 }

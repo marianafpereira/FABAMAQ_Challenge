@@ -1,81 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { getUser, updateUser, deleteUser } from '../services/UserService';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import ErrorPage from './Status/ErrorPage';
-import { getPosts } from "../services/PostsService.jsx";
+import { useParams, Link } from 'react-router-dom';
+import { getUser } from '../services/UserService';
 import Loading from '../components/Loading/Loading';
-import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
+import ErrorPage from './Status/ErrorPage';
 import '../styles/UserPage.css';
 
 const UserPage = () => {
     const { userId } = useParams();
     const [user, setUser] = useState(null);
-    const [error, setError] = useState(null);
-    const [isEditing, setIsEditing] = useState(false);
-    const [formData, setFormData] = useState({ name: '', email: '', gender: '' });
-    const [postId, setPostId] = useState(null);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (userId) {
-            const fetchUser = async () => {
-                try {
-                    const userData = await getUser(userId);
-                    setUser(userData);
-                    setFormData({ name: userData.name, email: userData.email, gender: userData.gender });
-                    const posts = await getPosts(userId);
-                    if (posts.length > 0) {
-                        setPostId(posts[0].id);
-                    }
-                } catch (error) {
-                    if (error.response && error.response.status === 404) {
-                        setError('User not found');
-                    } else {
-                        setError('Error fetching user');
-                    }
-                } finally {
-                    setLoading(false);
-                }
-            };
+        const fetchUserData = async () => {
+            try {
+                const userData = await getUser(userId);
+                setUser(userData);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-            fetchUser();
-        } else {
-            setError('User ID is undefined');
-            setLoading(false);
-        }
+        fetchUserData();
     }, [userId]);
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
-    const handleEditToggle = () => {
-        setIsEditing(!isEditing);
-    };
-
-    const handleFormSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const updatedUser = await updateUser(userId, formData);
-            setUser(updatedUser);
-            setIsEditing(false);
-        } catch (error) {
-            console.error('Error updating user:', error);
-            setError(error.message);
-        }
-    };
-
-    const handleDelete = async () => {
-        try {
-            await deleteUser(userId);
-            navigate('/');
-        } catch (error) {
-            console.error('Error deleting user:', error);
-            setError(error.message);
-        }
-    };
 
     if (loading) {
         return <Loading />;
@@ -85,45 +35,24 @@ const UserPage = () => {
         return <ErrorPage customError={error} />;
     }
 
-    if (!user) {
-        return <div>Loading...</div>;
-    }
-
     return (
-        <div className="user-page">
-            <Breadcrumb />
-            <h1>{user.name} details</h1>
-            {isEditing ? (
-                <form onSubmit={handleFormSubmit} className="user-form">
-                    <div className="form-group">
-                        <label>Name:</label>
-                        <input type="text" name="name" value={formData.name} onChange={handleInputChange} />
-                    </div>
-                    <div className="form-group">
-                        <label>Email:</label>
-                        <input type="email" name="email" value={formData.email} onChange={handleInputChange} />
-                    </div>
-                    <div className="form-group">
-                        <label>Gender:</label>
-                        <input type="text" name="gender" value={formData.gender} onChange={handleInputChange} />
-                    </div>
-                    <div className="button-group">
-                        <button type="submit">Save</button>
-                        <button type="button" onClick={handleEditToggle}>Cancel</button>
-                    </div>
-                </form>
-            ) : (
-                <div className="user-details">
-                    <p><strong>Email:</strong> {user.email}</p>
-                    <p><strong>Gender:</strong> {user.gender}</p>
-                    <div className="button-group">
-                        <button onClick={handleEditToggle}>Edit</button>
-                        <button onClick={handleDelete}>Delete Account</button>
-                    </div>
+        <div>
+            <div className="breadcrumbs">
+                <Link to="/">Home</Link> &gt; <Link to="/users">Users</Link> &gt; {user ? user.name : 'User Details'}
+            </div>
+            <div className="user-details-title">
+                <h1>{user ? `${user.name} User Details` : 'User Details'}</h1>
+                <div className="user-details-buttons">
+                    <button>Edit</button>
+                    <button>Delete</button>
                 </div>
-            )}
-            <div className="posts-link">
-                <Link to={`/user/${userId}/posts-comments`}>View Your Posts and Comments</Link>
+            </div>
+            <div className="user-details-container">
+                <p>Gender: {user.gender}</p>
+                <p>Email: {user.email}</p>
+                <div className="view-posts-comments">
+                    <Link to={`/user/${userId}/posts-comments`}>View Posts and Comments From User</Link>
+                </div>
             </div>
         </div>
     );
