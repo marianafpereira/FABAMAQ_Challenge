@@ -134,11 +134,11 @@
     background-color: var(--primary-color);
 }
 .user-detail {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .separator {
     border: none;
-    border-top: 1px solid var(--primary-color);
+    border-top: 1px solid white;
     margin: 1rem 0;
 }
