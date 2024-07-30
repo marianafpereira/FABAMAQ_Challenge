@@ -73,7 +73,7 @@ const UserPage = () => {
     return (
         <div>
             <div className="breadcrumbs">
-                <Link to="/">Home</Link> &gt; <Link to="/users">Users</Link> &gt; {user ? user.name : 'User Details'}
+                <Link to="/">Home</Link> &gt; {user ? user.name : 'User Details'}
             </div>
             <div className="user-details-title">
                 <h1>{user ? user.name : 'User'}</h1>
