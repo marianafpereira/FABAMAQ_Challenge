@@ -1,0 +1,60 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.title-animation {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.subtitle-animation {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.title-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.subtitle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+}
+
+.subtitle-container h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0rem;
+    font-family: var(--font-family);
+}
+
+.thick-underline {
+    width: var(--custom-underline-width);
+    height: 0.90rem;
+    background-color: var(--primary-color);
+    border-radius: 100px;
+    margin-top: 0.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-top: 6rem;
+    font-family: var(--font-family);
+}
