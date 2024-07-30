@@ -9,12 +9,14 @@ const Breadcrumb = () => {
     const isUserPage = pathnames.length === 2 && pathnames[0] === 'user';
     const isNewUserPage = pathnames.length === 1 && pathnames[0] === 'new-user';
 
+    const userId = pathnames[1]; // Extract userId from the pathnames
+
     const breadcrumbItems = pathnames.map((value, index) => {
         const to = `/${pathnames.slice(0, index + 1).join('/')}`;
         if (index === 0 && !isUserPage && !isNewUserPage) {
             return (
                 <li key={to}>
-                    <Link to="/user/7202320">User</Link>
+                    <Link to={`/user/${userId}`}>User</Link>
                 </li>
             );
         } else if (index === 1 && value === 'posts-comments') {

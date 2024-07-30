@@ -1,5 +1,14 @@
 .breadcrumb {
+    display: flex;
+    justify-content: center;
     padding: 10px 0;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    font-family: sans-serif;
+    font-weight: bold;
+    position: relative;
 }
 
 .breadcrumb ul {
@@ -19,4 +28,15 @@
 
 .breadcrumb a:hover {
     text-decoration: underline;
+}
+.breadcrumb .current {
+    font-weight: bold;
+}
+.back {
+    cursor: pointer;
+}
+
+.back:hover {
+    fill: var(--tertiary-color);
+    transition: 300ms ease-in-out;
 }

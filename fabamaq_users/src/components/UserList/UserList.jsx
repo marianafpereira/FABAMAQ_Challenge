@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchUsers } from '../../services/UserService.jsx';
 import Loading from '../Loading/Loading';
+import '../../styles/UserList.css';
 
 const UserList = ({ searchTerm }) => {
     const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -26,9 +27,14 @@ const UserList = ({ searchTerm }) => {
         getUsers();
     }, []);
 
-    const filteredUsers = users.filter(user =>
-        user.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filteredUsers = users.filter(user => {
+        const searchTermLower = searchTerm.toLowerCase();
+        return (
+            user.name.toLowerCase().includes(searchTermLower) ||
+            user.email.toLowerCase().includes(searchTermLower) ||
+            (user.gender && user.gender.toLowerCase() === searchTermLower)
+        );
+    });
 
     if (loading) {
         return <Loading />;
@@ -39,14 +45,25 @@ const UserList = ({ searchTerm }) => {
     }
 
     return (
-        <div>
-            <ul>
+        <div className="user-list-container">
+            <table className="user-list-table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
                 {Array.isArray(filteredUsers) && filteredUsers.map(user => (
-                    <li key={user.id}>
-                        <Link to={`/user/${user.id}`}>{user.name}</Link>
-                    </li>
+                    <tr key={user.id}>
+                        <td><Link to={`/user/${user.id}`}>{user.name}</Link></td>
+                        <td>{user.gender}</td>
+                        <td>{user.email}</td>
+                    </tr>
                 ))}
-            </ul>
+                </tbody>
+            </table>
         </div>
     );
 };

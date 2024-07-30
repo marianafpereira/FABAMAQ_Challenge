@@ -10,6 +10,7 @@ const UserStatistics = ({ userId, setError }) => {
     useEffect(() => {
         const fetchStatistics = async () => {
             try {
+                setLoading(true);
                 const postsData = await getPostsStatistics(userId);
                 setPostsCount(postsData.user.posts.totalCount);
 

@@ -5,6 +5,7 @@ import ErrorPage from './Status/ErrorPage';
 import { getPosts } from "../services/PostsService.jsx";
 import Loading from '../components/Loading/Loading';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
+import '../styles/UserPage.css';
 
 const UserPage = () => {
     const { userId } = useParams();
@@ -89,35 +90,39 @@ const UserPage = () => {
     }
 
     return (
-        <div>
+        <div className="user-page">
             <Breadcrumb />
             <h1>{user.name} details</h1>
             {isEditing ? (
-                <form onSubmit={handleFormSubmit}>
-                    <div>
+                <form onSubmit={handleFormSubmit} className="user-form">
+                    <div className="form-group">
                         <label>Name:</label>
                         <input type="text" name="name" value={formData.name} onChange={handleInputChange} />
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label>Email:</label>
                         <input type="email" name="email" value={formData.email} onChange={handleInputChange} />
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label>Gender:</label>
                         <input type="text" name="gender" value={formData.gender} onChange={handleInputChange} />
                     </div>
-                    <button type="submit">Save</button>
-                    <button type="button" onClick={handleEditToggle}>Cancel</button>
+                    <div className="button-group">
+                        <button type="submit">Save</button>
+                        <button type="button" onClick={handleEditToggle}>Cancel</button>
+                    </div>
                 </form>
             ) : (
-                <>
+                <div className="user-details">
                     <p><strong>Email:</strong> {user.email}</p>
                     <p><strong>Gender:</strong> {user.gender}</p>
-                    <button onClick={handleEditToggle}>Edit</button>
-                </>
+                    <div className="button-group">
+                        <button onClick={handleEditToggle}>Edit</button>
+                        <button onClick={handleDelete}>Delete Account</button>
+                    </div>
+                </div>
             )}
-            <button onClick={handleDelete}>Delete Account</button>
-            <div>
+            <div className="posts-link">
                 <Link to={`/user/${userId}/posts-comments`}>View Your Posts and Comments</Link>
             </div>
         </div>

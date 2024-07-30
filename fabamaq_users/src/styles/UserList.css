@@ -1,0 +1,29 @@
+/* UserList.css */
+.user-list-container {
+    background-color: var(--box-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.user-list-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-list-table th,
+.user-list-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--background-color);
+}
+
+.user-list-table th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.user-list-table tr {
+    background-color: transparent;
+}

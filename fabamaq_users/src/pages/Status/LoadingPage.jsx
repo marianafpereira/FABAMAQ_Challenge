@@ -1,17 +1,18 @@
+import React from 'react';
 import styles from "./status.module.css";
-import PropTypes from "prop-types";
 import Loading from "../../components/Loading/Loading.jsx";
+import PropTypes from "prop-types";
 
-const ErrorPage = () => {
+const LoadingPage = () => {
     return (
         <main className={`${styles.center}`}>
-            <Loading/>
+            <Loading />
         </main>
     );
 };
 
-export default ErrorPage;
+export default LoadingPage;
 
-ErrorPage.propTypes = {
+LoadingPage.propTypes = {
     customError: PropTypes.string
 }

@@ -1,0 +1,21 @@
+.user-page {
+    padding: 1rem;
+}
+
+.user-form, .user-details {
+    margin-top: 1rem;
+}
+
+.form-group {
+    margin-bottom: 5rem;
+}
+
+.button-group {
+    display: flex;
+    gap: 4rem;
+    margin-top: 4rem;
+}
+
+.posts-link {
+    margin-top: 4rem;
+}

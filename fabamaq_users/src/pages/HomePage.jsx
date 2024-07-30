@@ -8,9 +8,9 @@ import '../styles/HomePage.css';
 import '../styles/index.css';
 import { getUserBySearchTerm } from "../services/UserService.jsx";
 import UserList from "../components/UserList/UserList.jsx";
-import Loading from '../components/Loading/Loading';
-import ErrorPage from './Status/ErrorPage';
-import Wave from "react-wavify";
+import Loading from '../components/Loading/Loading.jsx';
+import ErrorPage from './Status/ErrorPage.jsx';
+
 
 const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState('');

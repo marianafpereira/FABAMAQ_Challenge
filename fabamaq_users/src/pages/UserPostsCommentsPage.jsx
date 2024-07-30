@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getPosts } from '../services/PostsService';
 import { getComments } from '../services/CommentsService';
 import { getUser } from '../services/UserService';
-import Loading from '../components/Loading/Loading';
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 import UserStatistics from '../components/UserStatistics/UserStatistics';
+import ErrorPage from './Status/ErrorPage';
+import LoadingPage from './Status/LoadingPage';
 
 const UserPostsCommentsPage = () => {
     const { userId } = useParams();
@@ -46,7 +47,7 @@ const UserPostsCommentsPage = () => {
     }, [userId]);
 
     if (loading) {
-        return <Loading />;
+        return <LoadingPage />;
     }
 
     if (error) {
