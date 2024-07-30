@@ -31,7 +31,7 @@ const HomePage = () => {
     return (
         <BaseLayout pageTitle="Welcome to " subtitle="FABAMAQ Challenge">
             <div className="home-page">
-                <SectionHeading text="User List"/>
+                <SectionHeading text="All Users" className="section-heading"/>
                 <div className="search-container">
                     <SearchBar
                         searchTerm={searchTerm}
