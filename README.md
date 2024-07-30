@@ -10,7 +10,7 @@ My name is Mariana Pereira, and I developed this application as part of a challe
 
 ## How to Run the Application
 To run this application locally, follow these steps:  
-1. Clone the Repository . Open your terminal and run the following command to clone the repository: <pre>git clone https://github.com/marianafpereira/fabamaq.git </pre>
+1. Clone the Repository . Open your terminal and run the following command to clone the repository: <pre>git clone https://github.com/marianafpereira/FABAMAQ_Challenge.git </pre>
 2. Navigate to the Project Directory  Change your current directory to the project directory:  <pre>cd fabamaq_users </pre>
 3. Run the Application by starting the development server:  <pre>npm run dev </pre> The application should now be running on http://localhost:5173.  
 
