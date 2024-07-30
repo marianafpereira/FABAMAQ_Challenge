@@ -8,6 +8,7 @@ import ErrorPage from './Status/ErrorPage';
 import Footer from '../components/Footer/Footer';
 import SectionHeading from '../components/Headings/SectionHeading';
 import '../styles/UserPostsCommentsPage.css';
+import TitleHeading from "../components/Headings/TitleHeading.jsx";
 
 const UserPostsCommentsPage = () => {
     const { userId } = useParams();
@@ -57,7 +58,7 @@ const UserPostsCommentsPage = () => {
                 <Link to="/">Home</Link> &gt; <Link to={`/user/${userId}`}>User Details</Link> &gt; Posts and Comments
             </div>
             <div className="user-details-title">
-                <h1>{user ? user.name : 'User'}</h1>
+                <TitleHeading title={user ? user.name : 'User'} showChatIcon={true} />
                 <div className="thick-underline"></div>
                 <SectionHeading text="Posts and Comments" className="subtitle sideline" />
             </div>

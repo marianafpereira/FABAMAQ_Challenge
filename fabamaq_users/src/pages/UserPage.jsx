@@ -123,7 +123,7 @@ const UserPage = () => {
                 <Link to="/">Home</Link> &gt; {user ? user.name : 'User Details'}
             </div>
             <div className="user-details-title">
-                <TitleHeading title={user ? user.name : 'User'} />
+                <TitleHeading title={user ? user.name : 'User'} showUserIcon={true} />
                 <div className="thick-underline"></div>
                 <div className="subtitle">
                     <SectionHeading text="User's Details" />
