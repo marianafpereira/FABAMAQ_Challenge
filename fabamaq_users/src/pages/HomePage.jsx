@@ -9,6 +9,7 @@ import '../styles/index.css';
 import UserList from "../components/UserList/UserList.jsx";
 import Loading from '../components/Loading/Loading.jsx';
 import ErrorPage from './Status/ErrorPage.jsx';
+import { UserList as UserListIcon } from "@phosphor-icons/react";
 
 const HomePage = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -31,7 +32,10 @@ const HomePage = () => {
     return (
         <BaseLayout pageTitle="Welcome to " subtitle="FABAMAQ Challenge">
             <div className="home-page">
-                <SectionHeading text="All Users" className="section-heading"/>
+                <div className="section-heading">
+                    <UserListIcon weight="duotone" color="var(--primary-color)" size={50} className="icon-left" />
+                    <SectionHeading text="All Users" />
+                </div>
                 <div className="search-container">
                     <SearchBar
                         searchTerm={searchTerm}

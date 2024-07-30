@@ -45,10 +45,27 @@ h1 {
     background-color: var(--tertiary-color);
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .section-heading {
+    display: flex;
+    align-items: center;
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 1rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.icon-left {
+    margin-right: 0.5rem;
+    animation: fadeIn 1s ease-in-out;
 }
 
 a {
