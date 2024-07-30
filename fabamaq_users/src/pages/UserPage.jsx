@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getUser, updateUser, deleteUser } from '../services/UserService';
 import Loading from '../components/Loading/Loading';
-import ErrorPage from './Status/ErrorPage';
 import Footer from '../components/Footer/Footer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/UserPage.css';
 
 const UserPage = () => {
@@ -41,19 +42,63 @@ const UserPage = () => {
             await updateUser(userId, editedUser);
             setUser(editedUser);
             setIsEditing(false);
+            toast.success('User details updated successfully', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                style: { backgroundColor: 'green' }
+            });
         } catch (error) {
             console.error('Error updating user data:', error);
-            setError(error.message);
+            toast.error('Error updating user: ' + error.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                style: { backgroundColor: 'red' }
+            });
         }
     };
 
     const handleDeleteClick = async () => {
         try {
             await deleteUser(userId);
-            navigate('/');
+            toast.success('User deleted successfully', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                style: { backgroundColor: 'green' }
+            });
+            setTimeout(() => {
+                navigate('/');
+            }, 3000);
         } catch (error) {
             console.error('Error deleting user:', error);
-            setError(error.message);
+            toast.error('Error deleting user: ' + error.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                style: { backgroundColor: 'red' }
+            });
         }
     };
 
@@ -111,6 +156,7 @@ const UserPage = () => {
                 </div>
             </div>
             <Footer />
+            <ToastContainer />
         </div>
     );
 };

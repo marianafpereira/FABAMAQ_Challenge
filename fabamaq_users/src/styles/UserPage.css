@@ -89,3 +89,12 @@
 .footer p {
     font-weight: bold;
 }
+
+.toast-container {
+    font-family: var(--font-family), sans-serif;
+}
+
+.leaflet-container {
+    height: 45vh;
+    width: 45vh;
+}
