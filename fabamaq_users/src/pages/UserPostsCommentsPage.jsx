@@ -7,8 +7,9 @@ import Loading from '../components/Loading/Loading';
 import ErrorPage from './Status/ErrorPage';
 import Footer from '../components/Footer/Footer';
 import SectionHeading from '../components/Headings/SectionHeading';
-import '../styles/UserPostsCommentsPage.css';
 import TitleHeading from "../components/Headings/TitleHeading.jsx";
+import { ChatCircleText, Note, CheckCircle, ChartLine } from "@phosphor-icons/react";
+import '../styles/UserPostsCommentsPage.css';
 
 const UserPostsCommentsPage = () => {
     const { userId } = useParams();
@@ -63,13 +64,14 @@ const UserPostsCommentsPage = () => {
                 <SectionHeading text="Posts and Comments" className="subtitle sideline" />
             </div>
             <div className="user-details-container">
-                <h2>Posts</h2>
+                <h2><CheckCircle weight="duotone" color="var(--primary-color)" size={24} /> Posts</h2>
                 {loading ? (
                     <Loading />
                 ) : posts.length > 0 ? (
                     <ul>
                         {posts.map(post => (
-                            <li key={post.id}>
+                            <li key={post.id} className="post-item">
+                                <Note weight="duotone" color="var(--primary-color)" size={24} />
                                 <p>{post.title}</p>
                             </li>
                         ))}
@@ -79,13 +81,14 @@ const UserPostsCommentsPage = () => {
                 )}
             </div>
             <div className="user-details-container">
-                <h2>Comments</h2>
+                <h2><CheckCircle weight="duotone" color="var(--primary-color)" size={24} /> Comments</h2>
                 {loading ? (
                     <Loading />
                 ) : comments.length > 0 ? (
                     <ul>
                         {comments.map(comment => (
-                            <li key={comment.id}>
+                            <li key={comment.id} className="comment-item">
+                                <ChatCircleText weight="duotone" color="var(--primary-color)" size={24} />
                                 <p>{comment.body}</p>
                             </li>
                         ))}
@@ -95,13 +98,13 @@ const UserPostsCommentsPage = () => {
                 )}
             </div>
             <div className="user-details-container">
-                <h2>Statistics</h2>
+                <h2><CheckCircle weight="duotone" color="var(--primary-color)" size={24} /> Statistics</h2>
                 {loading ? (
                     <Loading />
                 ) : (
                     <>
-                        <p>Number of Posts: {posts.length}</p>
-                        <p>Number of Comments: {comments.length}</p>
+                        <p className="statistics-item"><ChartLine weight="duotone" color="var(--primary-color)" size={24} /> <strong>Number of Posts:</strong> {posts.length}</p>
+                        <p className="statistics-item"><ChartLine weight="duotone" color="var(--primary-color)" size={24} /> <strong>Number of Comments:</strong> {comments.length}</p>
                     </>
                 )}
             </div>
