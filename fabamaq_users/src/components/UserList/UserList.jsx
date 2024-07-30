@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { fetchUsers } from '../../services/UserService.jsx';
 import Loading from '../Loading/Loading';
 import '../../styles/UserList.css';
+import { GenderFemale, GenderMale, EnvelopeSimple, IdentificationCard } from "@phosphor-icons/react";
 
 const UserList = ({ searchTerm }) => {
     const [users, setUsers] = useState([]);
@@ -56,9 +57,28 @@ const UserList = ({ searchTerm }) => {
                 <tbody>
                 {Array.isArray(filteredUsers) && filteredUsers.map(user => (
                     <tr key={user.id}>
-                        <td><Link to={`/user/${user.id}`}>{user.name}</Link></td>
-                        <td>{user.gender}</td>
-                        <td>{user.email}</td>
+                        <td>
+                            <span className="icon-text">
+                                <IdentificationCard weight="duotone" color="var(--primary-color)" size={20} className="icon-left" />
+                                <Link to={`/user/${user.id}`}>{user.name}</Link>
+                            </span>
+                        </td>
+                        <td>
+                            <span className="icon-text">
+                                {user.gender.toLowerCase() === 'female' ? (
+                                    <GenderFemale weight="duotone" color="var(--primary-color)" size={20} className="icon-left" />
+                                ) : (
+                                    <GenderMale weight="duotone" color="var(--primary-color)" size={20} className="icon-left" />
+                                )}
+                                {user.gender}
+                            </span>
+                        </td>
+                        <td>
+                            <span className="icon-text">
+                                <EnvelopeSimple weight="duotone" color="var(--primary-color)" size={20} className="icon-left" />
+                                {user.email}
+                            </span>
+                        </td>
                     </tr>
                 ))}
                 </tbody>

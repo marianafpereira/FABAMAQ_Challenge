@@ -1,4 +1,3 @@
-/* UserList.css */
 .user-list-container {
     background-color: var(--box-color);
     border-radius: var(--border-radius);
@@ -26,4 +25,14 @@
 
 .user-list-table tr {
     background-color: transparent;
+}
+
+.icon-left {
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.icon-text {
+    display: flex;
+    align-items: center;
 }
