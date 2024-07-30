@@ -1,7 +1,7 @@
 import { UserCircle, ChatText } from "@phosphor-icons/react";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
-import './TitleHeading.css';
+import '../../styles/TitleHeading.css';
 
 const TitleHeading = ({ title = "", subtitle = "", showUserIcon = false, showChatIcon = false }) => {
     useEffect(() => {
