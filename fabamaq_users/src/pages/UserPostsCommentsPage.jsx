@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getPosts } from '../services/PostsService';
 import { getComments } from '../services/CommentsService';
 import { getUser } from '../services/UserService';
-import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
-import UserStatistics from '../components/UserStatistics/UserStatistics';
+import Loading from '../components/Loading/Loading';
 import ErrorPage from './Status/ErrorPage';
-import LoadingPage from './Status/LoadingPage';
+import Footer from '../components/Footer/Footer';
+import '../styles/UserPostsCommentsPage.css';
 
 const UserPostsCommentsPage = () => {
     const { userId } = useParams();
@@ -46,21 +46,25 @@ const UserPostsCommentsPage = () => {
         fetchPostsAndComments();
     }, [userId]);
 
-    if (loading) {
-        return <LoadingPage />;
-    }
-
     if (error) {
         return <ErrorPage customError={error} />;
     }
 
     return (
         <div>
-            <Breadcrumb />
-            <h1>{user ? `${user.name}'s Posts and Comments` : 'User Posts and Comments'}</h1>
-            <div>
+            <div className="breadcrumbs">
+                <Link to="/">Home</Link> &gt; <Link to={`/user/${userId}`}>User Details</Link> &gt; Posts and Comments
+            </div>
+            <div className="user-details-title">
+                <h1>{user ? user.name : 'User'}</h1>
+                <div className="thick-underline"></div>
+                <h2 className="subtitle">Posts and Comments</h2>
+            </div>
+            <div className="user-details-container">
                 <h2>Posts</h2>
-                {posts.length > 0 ? (
+                {loading ? (
+                    <Loading />
+                ) : posts.length > 0 ? (
                     <ul>
                         {posts.map(post => (
                             <li key={post.id}>
@@ -73,9 +77,11 @@ const UserPostsCommentsPage = () => {
                     <p>There's no data for this field.</p>
                 )}
             </div>
-            <div>
+            <div className="user-details-container">
                 <h2>Comments</h2>
-                {comments.length > 0 ? (
+                {loading ? (
+                    <Loading />
+                ) : comments.length > 0 ? (
                     <ul>
                         {comments.map(comment => (
                             <li key={comment.id}>
@@ -87,7 +93,18 @@ const UserPostsCommentsPage = () => {
                     <p>There's no data for this field.</p>
                 )}
             </div>
-            <UserStatistics userId={userId} setError={setError} />
+            <div className="user-details-container">
+                <h2>Statistics</h2>
+                {loading ? (
+                    <Loading />
+                ) : (
+                    <>
+                        <p>Number of Posts: {posts.length}</p>
+                        <p>Number of Comments: {comments.length}</p>
+                    </>
+                )}
+            </div>
+            <Footer />
         </div>
     );
 };

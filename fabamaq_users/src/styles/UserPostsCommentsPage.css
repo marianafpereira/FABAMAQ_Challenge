@@ -1,0 +1,77 @@
+body {
+    font-family: "Work Sans Variable", sans-serif;
+}
+
+.user-details-container {
+    background-color: var(--box-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.user-details-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: -0.5ch;
+    position: relative;
+    margin-top: 1rem;
+}
+
+.user-details-title h1 {
+    font-size: 3rem;
+}
+
+.thick-underline {
+    width: var(--custom-underline-width);
+    height: 0.5rem;
+    background-color: var(--primary-color);
+    margin-top: 0.5rem;
+    border-radius: 50px;
+}
+
+.subtitle {
+    font-size: 1.75rem; /* Increased font size for the subtitle */
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.breadcrumbs {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.breadcrumbs a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-top: auto;
+    padding: 1rem;
+    width: 100%;
+    background-color: transparent;
+    margin-top: auto;
+}
+
+.footer p {
+    font-weight: bold;
+}

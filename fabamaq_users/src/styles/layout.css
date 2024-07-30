@@ -71,6 +71,7 @@
     padding: 1rem;
     width: 100%;
     background-color: transparent;
+    margin-top: auto;
 }
 .footer p {
     font-weight: bold;
