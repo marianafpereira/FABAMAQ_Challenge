@@ -1,10 +1,10 @@
-/* UserPage.css */
 .user-details-container {
     background-color: var(--box-color);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    padding: 1rem;
+    padding: 2rem;
     margin-bottom: 1rem;
+    margin-top: 2rem;
     position: relative;
 }
 
@@ -12,7 +12,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
+    margin-top: 6rem;
 }
 
 .user-details-buttons {
@@ -42,4 +43,19 @@
 
 .breadcrumbs a:hover {
     text-decoration: underline;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 1rem;
+    width: 100%;
+    background-color: transparent;
+}
+.footer p {
+    font-weight: bold;
 }

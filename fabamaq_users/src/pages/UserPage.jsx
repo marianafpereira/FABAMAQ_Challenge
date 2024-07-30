@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { getUser } from '../services/UserService';
 import Loading from '../components/Loading/Loading';
 import ErrorPage from './Status/ErrorPage';
+import Footer from '../components/Footer/Footer';
 import '../styles/UserPage.css';
 
 const UserPage = () => {
@@ -54,6 +55,7 @@ const UserPage = () => {
                     <Link to={`/user/${userId}/posts-comments`}>View Posts and Comments From User</Link>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };
