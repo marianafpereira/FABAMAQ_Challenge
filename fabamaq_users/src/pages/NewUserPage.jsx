@@ -4,6 +4,7 @@ import { handleSubmit } from '../services/NewUserService';
 import Footer from '../components/Footer/Footer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import TitleHeading from '../components/Headings/TitleHeading';
 import '../styles/NewUserPage.css';
 
 const NewUserPage = () => {
@@ -63,7 +64,7 @@ const NewUserPage = () => {
                 <a href="/">Home</a> &gt; Create New User
             </div>
             <div className="user-details-title">
-                <h1>Create New User</h1>
+                <TitleHeading title="New User" showUserIcon={true} />
                 <div className="thick-underline"></div>
             </div>
             <div className="user-details-container">
