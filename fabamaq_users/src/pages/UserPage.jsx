@@ -3,6 +3,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getUser, updateUser, deleteUser } from '../services/UserService';
 import Loading from '../components/Loading/Loading';
 import Footer from '../components/Footer/Footer';
+import SectionHeading from '../components/Headings/SectionHeading';
+import TitleHeading from "../components/Headings/TitleHeading.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/UserPage.css';
@@ -121,10 +123,10 @@ const UserPage = () => {
                 <Link to="/">Home</Link> &gt; {user ? user.name : 'User Details'}
             </div>
             <div className="user-details-title">
-                <h1>{user ? user.name : 'User'}</h1>
+                <TitleHeading title={user ? user.name : 'User'} />
                 <div className="thick-underline"></div>
                 <div className="subtitle">
-                    <span>User's Details</span>
+                    <SectionHeading text="User's Details" />
                     <div className="user-details-buttons">
                         {isEditing ? (
                             <button onClick={handleSaveClick}>Save</button>

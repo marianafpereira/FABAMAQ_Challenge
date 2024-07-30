@@ -1,24 +1,22 @@
-import {UserCircle} from "@phosphor-icons/react";
+import { UserCircle } from "@phosphor-icons/react";
 import PropTypes from "prop-types";
-import {useEffect} from "react";
+import { useEffect } from "react";
 
-const TitleHeading = ({title, subtitle = undefined}) => {
-
+const TitleHeading = ({ title = "", subtitle = "" }) => {
     useEffect(() => {
         const length = subtitle ?
             subtitle.replace(" ", "").length :
             title.replace(/ +/g, "").length;
         document.documentElement.style
             .setProperty('--custom-underline-width', `${length - 1}ch`);
-    }, [subtitle, title.length]);
+    }, [subtitle, title]);
 
     return (
         <>
             {title === "Welcome," && (
-                <UserCircle weight="duotone" color="var(--primary-color)" size={30}/>
+                <UserCircle weight="duotone" color="var(--primary-color)" size={30} />
             )}
-            <h1 className={subtitle ? "" : "underline"}>{title}</h1>
-            {subtitle && <h1 className="underline">{subtitle}</h1>}
+            <h1>{title}</h1>
         </>
     );
 };

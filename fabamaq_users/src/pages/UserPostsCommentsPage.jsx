@@ -6,6 +6,7 @@ import { getUser } from '../services/UserService';
 import Loading from '../components/Loading/Loading';
 import ErrorPage from './Status/ErrorPage';
 import Footer from '../components/Footer/Footer';
+import SectionHeading from '../components/Headings/SectionHeading';
 import '../styles/UserPostsCommentsPage.css';
 
 const UserPostsCommentsPage = () => {
@@ -58,7 +59,7 @@ const UserPostsCommentsPage = () => {
             <div className="user-details-title">
                 <h1>{user ? user.name : 'User'}</h1>
                 <div className="thick-underline"></div>
-                <h2 className="subtitle">Posts and Comments</h2>
+                <SectionHeading text="Posts and Comments" className="subtitle sideline" />
             </div>
             <div className="user-details-container">
                 <h2>Posts</h2>
@@ -68,8 +69,7 @@ const UserPostsCommentsPage = () => {
                     <ul>
                         {posts.map(post => (
                             <li key={post.id}>
-                                <h3>{post.title}</h3>
-                                <p>{post.body}</p>
+                                <p>{post.title}</p>
                             </li>
                         ))}
                     </ul>

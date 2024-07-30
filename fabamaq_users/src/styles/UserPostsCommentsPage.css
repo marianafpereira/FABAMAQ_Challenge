@@ -22,6 +22,7 @@ body {
     margin-bottom: -0.5ch;
     position: relative;
     margin-top: 1rem;
+    padding: 1rem;
 }
 
 .user-details-title h1 {
@@ -37,9 +38,9 @@ body {
 }
 
 .subtitle {
-    font-size: 1.75rem; /* Increased font size for the subtitle */
+    font-size: 1.75rem;
     font-weight: 600;
-    margin-top: 0.5rem;
+    /*margin-top: 0.5rem;*/
 }
 
 .breadcrumbs {
@@ -74,4 +75,22 @@ body {
 
 .footer p {
     font-weight: bold;
+}
+
+.sideline {
+    position: relative;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.sideline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.25rem;
+    height: 100%;
+    background-color: var(--primary-color);
 }
