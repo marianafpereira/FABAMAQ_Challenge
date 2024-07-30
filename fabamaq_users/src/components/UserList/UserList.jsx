@@ -14,7 +14,6 @@ const UserList = ({ searchTerm }) => {
             setLoading(true);
             try {
                 const userList = await fetchUsers();
-                console.log('User list:', userList);
                 setUsers(Array.isArray(userList) ? userList : []);
             } catch (error) {
                 setError('Error fetching users');
@@ -32,7 +31,7 @@ const UserList = ({ searchTerm }) => {
         return (
             user.name.toLowerCase().includes(searchTermLower) ||
             user.email.toLowerCase().includes(searchTermLower) ||
-            (user.gender && user.gender.toLowerCase() === searchTermLower)
+            (user.gender && user.gender.toLowerCase().startsWith(searchTermLower))
         );
     });
 
