@@ -50,6 +50,7 @@ export const getUser = async (userId) => {
 export const updateUser = async (userId, userData) => {
     try {
         const response = await axios.put(`https://gorest.co.in/public/v2/users/${userId}`, userData, {
+            method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${API_KEY}`,
                 'Content-Type': 'application/json'
@@ -64,7 +65,7 @@ export const updateUser = async (userId, userData) => {
 
 export const deleteUser = async (userId) => {
     try {
-        await axios.delete(`https://gorest.co.in/public/v2/users/${userId}`, {
+        const response = await axios.delete(`https://gorest.co.in/public/v2/users/${userId}`, {
             headers: {
                 'Authorization': `Bearer ${API_KEY}`
             }
