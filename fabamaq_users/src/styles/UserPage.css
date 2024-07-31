@@ -91,16 +91,28 @@
     text-decoration: underline;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+}
+
 .footer {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 0.85rem;
-    margin-top: auto;
-    margin-bottom: auto;
     padding: 1rem;
     width: 100%;
     background-color: transparent;
+    position: fixed;
+    bottom: 0;
+    z-index: 10; /* Ensure the footer is above other content */
 }
 
 .footer p {

@@ -21,6 +21,9 @@ const HomePage = () => {
         setSearchTerm(event.target.value);
     };
 
+    const handleCreateAccountClick = () => {
+        navigate('/new-user');
+    };
     if (loading) {
         return <Loading />;
     }
@@ -33,19 +36,19 @@ const HomePage = () => {
         <BaseLayout pageTitle="Welcome to " subtitle="FABAMAQ Challenge">
             <div className="home-page">
                 <div className="section-heading">
-                    <UserListIcon weight="duotone" color="var(--primary-color)" size={50} className="icon-left" />
-                    <SectionHeading text="All Users" />
+                    <UserListIcon weight="duotone" color="var(--primary-color)" size={50} className="icon-left"/>
+                    <SectionHeading text="All Users"/>
                 </div>
                 <div className="search-container">
                     <SearchBar
                         searchTerm={searchTerm}
                         onSearchChange={handleSearchChange}
                     />
+                    <div className="register-link">
+                        <button onClick={handleCreateAccountClick}>Create User</button>
+                    </div>
                 </div>
-                <UserList searchTerm={searchTerm} />
-                <p className="register-link">
-                    Not registered? <a href="/new-user">Create an account.</a>
-                </p>
+                <UserList searchTerm={searchTerm}/>
             </div>
             <Footer/>
         </BaseLayout>
