@@ -56,11 +56,17 @@
     font-size: 1.50rem;
     padding: 0.5rem 1rem;
     background-color: var(--primary-color);
+    background: linear-gradient(
+            90deg,
+            var(--primary-color) 0%,
+            var(--tertiary-color) 100%
+    );
     color: white;
     border: none;
     border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 1.25rem;
 }
 
 .user-details-buttons button:hover {

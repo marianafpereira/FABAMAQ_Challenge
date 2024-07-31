@@ -12,9 +12,6 @@ const SearchBar = ({ searchTerm, onSearchChange, onSearchSubmit, handleKeyDown }
                 onKeyDown={handleKeyDown}
                 className="search-input"
             />
-            <button onClick={onSearchSubmit} className="search-button">
-                Search
-            </button>
         </div>
     );
 };

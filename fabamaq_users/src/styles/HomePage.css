@@ -144,7 +144,7 @@ main {
     margin-top: auto;
 }
 .register-link button {
-    padding: 0.5rem 0.6rem;
+    padding: 0.7rem 1rem;
     border-radius: var(--border-radius);
     background: var(--primary-color);
     background: linear-gradient(

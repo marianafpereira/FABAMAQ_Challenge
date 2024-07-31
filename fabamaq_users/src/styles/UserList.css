@@ -21,7 +21,7 @@
 .user-list-table th {
     background-color: var(--primary-color);
     color: white;
-    border-radius: 0; /* Reset border-radius for all headers */
+    border-radius: 0;
 }
 
 .user-list-table th:first-child {

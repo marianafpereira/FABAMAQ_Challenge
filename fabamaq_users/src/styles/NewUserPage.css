@@ -33,6 +33,11 @@
     font-size: 1.50rem;
     padding: 0.5rem 1rem;
     background-color: var(--primary-color);
+    background: linear-gradient(
+            90deg,
+            var(--primary-color) 0%,
+            var(--tertiary-color) 100%
+    );
     color: white;
     border: none;
     border-radius: var(--border-radius);
@@ -41,6 +46,7 @@
     margin-top: 1rem;
     align-self: center;
     position: static;
+    font-size: 1.25rem;
 }
 
 .user-details-container form button:hover {
