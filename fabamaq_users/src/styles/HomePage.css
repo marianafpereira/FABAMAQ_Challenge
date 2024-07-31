@@ -28,6 +28,10 @@ html {
     position: relative;
 }
 
+body, h1, h2, h3, h4, h5, h6, p, a, span, div {
+    font-family: var(--font-family);
+}
+
 strong {
     font-weight: var(--bold);
 }
@@ -72,6 +76,7 @@ a {
     color: var(--primary-color);
     text-decoration: none;
 }
+
 .search-container {
     display: flex;
     justify-content: left;
@@ -79,12 +84,48 @@ a {
     height: auto;
     margin-bottom: 1%;
 }
+
 .register-link {
     text-align: center;
     align-items: center;
     margin-top: 1%;
 }
+/* Add these styles to HomePage.css */
+.title-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 1rem;
+}
 
+.subtitle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+}
+
+.subtitle-container h2 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 0rem;
+    font-family: var(--font-family);
+}
+
+.thick-underline {
+    width: var(--custom-underline-width);
+    height: 0.90rem;
+    background-color: var(--primary-color);
+    border-radius: 100px;
+    margin-top: 0.5rem;
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-top: 0rem;
+    font-family: var(--font-family);
+}
 
 
 
