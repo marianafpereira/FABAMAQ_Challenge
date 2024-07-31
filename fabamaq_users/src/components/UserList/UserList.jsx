@@ -18,9 +18,10 @@ const UserList = ({ searchTerm }) => {
                 setUsers(Array.isArray(userList) ? userList : []);
             } catch (error) {
                 setError('Error fetching users');
-                console.error('Error fetching users:', error);
             } finally {
-                setLoading(false);
+                setTimeout(() => {
+                    setLoading(false);
+                }, 2000);
             }
         };
 

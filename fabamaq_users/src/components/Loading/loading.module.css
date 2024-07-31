@@ -3,7 +3,10 @@
 	--uib-color: var(--primary-color);
 	--uib-speed: 2.5s;
 	--dot-size: calc(var(--uib-size) * 0.17);
-	position: relative;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	display: flex;
 	align-items: center;
 	justify-content: center;
