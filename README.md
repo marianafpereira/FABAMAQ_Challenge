@@ -31,6 +31,7 @@ To run this application locally, follow these steps:
 - **React Router**: For routing within the application.
 - **React Query**: For fetching and caching data.
 - **https://s.muz.li/ODM2MGYyMzQz**: For design of the waves.svg background.
+- **Axios**: For making HTTP requests to the API.
 
 
 Thank you for reviewing my application. If you have any questions, please feel free to contact me.
