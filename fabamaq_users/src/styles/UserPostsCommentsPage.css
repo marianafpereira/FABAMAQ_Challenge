@@ -101,7 +101,12 @@ body {
     gap: 0.5rem;
 }
 
-.user-details-container p {
+.user-details-container p,
+.user-details-container .no-data-message,
+.user-details-container .statistics-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-weight: normal;
 }
 
@@ -140,6 +145,12 @@ body {
 }
 
 .statistics-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 2rem;
+}
+.no-data-message {
     display: flex;
     align-items: center;
     gap: 0.5rem;

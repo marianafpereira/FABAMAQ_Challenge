@@ -8,7 +8,7 @@ import ErrorPage from './Status/ErrorPage';
 import Footer from '../components/Footer/Footer';
 import SectionHeading from '../components/Headings/SectionHeading';
 import TitleHeading from "../components/Headings/TitleHeading.jsx";
-import { ChatCircleText, Note, CheckCircle, ChartLine } from "@phosphor-icons/react";
+import { ChatCircleText, Note, CheckCircle, ChartLine, HandPalm } from "@phosphor-icons/react";
 import '../styles/UserPostsCommentsPage.css';
 
 const UserPostsCommentsPage = () => {
@@ -87,7 +87,7 @@ const UserPostsCommentsPage = () => {
                         ))}
                     </ul>
                 ) : (
-                    <p>There's no data for this field.</p>
+                    <p className="no-data-message"><HandPalm weight="duotone" color="var(--primary-color)" size={24} /> There's no data for this field.</p>
                 )}
             </div>
             <div className="user-details-container">
@@ -104,7 +104,7 @@ const UserPostsCommentsPage = () => {
                         ))}
                     </ul>
                 ) : (
-                    <p>There's no data for this field.</p>
+                    <p className="no-data-message"><HandPalm weight="duotone" color="var(--primary-color)" size={24} /> There's no data for this field.</p>
                 )}
             </div>
             <div className="user-details-container">
