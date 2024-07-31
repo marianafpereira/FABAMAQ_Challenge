@@ -10,27 +10,27 @@ My name is Mariana Pereira, and I developed this application as part of a challe
 
 ## How to Run the Application
 To run this application locally, follow these steps:  
-1. Clone the Repository . Open your terminal and run the following command to clone the repository: <pre>git clone https://github.com/marianafpereira/FABAMAQ_Challenge.git </pre>
-2. Navigate to the Project Directory  Change your current directory to the project directory:  <pre>cd fabamaq_users </pre>
-3. Run the Application by starting the development server:  <pre>npm run dev </pre> The application should now be running on http://localhost:5173.  
+1. **Clone the Repository** Open your terminal and run the following command to clone the repository: <pre>git clone https://github.com/marianafpereira/FABAMAQ_Challenge.git </pre>
+2. **Navigate to the Project Directory**  Change your current directory to the project directory:  <pre>cd fabamaq_users </pre>
+3. **Run the Application** by starting the development server:  <pre>npm run dev </pre> The application should now be running on http://localhost:5173.  
 
 ## Features
-1. User Listing: View a list of users with the ability to search and filter.
-2. CRUD Operations: Create, read, update, and delete users.
-3. User Details Page: View detailed information about a user.
-4. User Posts And Comments Page: View posts and comments from user including their statistics related to the user, such as the number of posts and comments.
+1. **User Listing**: View a list of users with the ability to search and filter.
+2. **CRUD Operations**: Create, read, update, and delete users.
+3. **User Details Page**: View detailed information about a user.
+4. **User Posts And Comments Page**: View posts and comments from user including their statistics related to the user, such as the number of posts and comments.
 
 ## Technologies Used
-- React: For building the user interface.
-- CSS: For styling the application.
-- GO REST API: For fetching user data, posts, and comments.
-- Vite: For building and serving the application.
-- Toastify: For displaying success and error messages.
-- Phosphor Icons: For using icons in the application.
-- GraphQL: For fetching data using GraphQL queries.
-- React Router: For routing within the application.
-- React Query: For fetching and caching data.
-- https://s.muz.li/ODM2MGYyMzQz: For design of the waves.svg background.
+- **React**: For building the user interface.
+- **CSS**: For styling the application.
+- **GO REST API**: For fetching user data, posts, and comments.
+- **Vite**: For building and serving the application.
+- **Toastify**: For displaying success and error messages.
+- **Phosphor Icons**: For using icons in the application.
+- **GraphQL**: For fetching data using GraphQL queries.
+- **React Router**: For routing within the application.
+- **React Query**: For fetching and caching data.
+- **https://s.muz.li/ODM2MGYyMzQz**: For design of the waves.svg background.
 
 
 Thank you for reviewing my application. If you have any questions, please feel free to contact me.
@@ -101,7 +101,7 @@ Thank you for reviewing my application. If you have any questions, please feel f
     - Displays a form for entering user details (name, email, gender) The status is pre-defined as active.
     - Handles form submission and calls the handleSubmit function from `NewUserService.jsx`.
     - Displays success or error messages using `react-toastify`.
-    - - Provides navigation to the HomePage.
+    - Provides navigation to the HomePage.
 
 ### UserPage.jsx
 - **Purpose**: To display and manage user details.
@@ -120,7 +120,7 @@ Thank you for reviewing my application. If you have any questions, please feel f
     - Provides statistics on the number of posts and comments.
     - Displays loading spinner while fetching data.
     - Handles and displays errors if data fetching fails.
-    - - Provides navigation to the user's details page and also to the HomePage.
+    - Provides navigation to the user's details page and also to the HomePage.
 
 ### ErrorPage.jsx
 - **Purpose**: To display an error message when an error occurs.
