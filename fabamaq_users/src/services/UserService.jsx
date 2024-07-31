@@ -20,19 +20,6 @@ export const fetchUsers = async () => {
     }
 };
 
-export const getUserBySearchTerm = async (searchTerm) => {
-    try {
-        const response = await axios.get(`https://gorest.co.in/public/v2/users?search=${searchTerm}`, {
-            headers: {
-                'Authorization': `Bearer ${API_KEY}`
-            }
-        });
-    } catch (error) {
-        console.error('Error fetching user by search term:', error);
-        throw error;
-    }
-};
-
 export const getUser = async (userId) => {
     try {
         const response = await axios.get(`https://gorest.co.in/public/v2/users/${userId}`, {
