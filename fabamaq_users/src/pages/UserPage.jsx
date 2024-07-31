@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getUser, updateUser, deleteUser } from '../services/UserService';
 import Loading from '../components/Loading/Loading';
+import ErrorPage from './Status/ErrorPage';
 import Footer from '../components/Footer/Footer';
 import SectionHeading from '../components/Headings/SectionHeading';
 import TitleHeading from "../components/Headings/TitleHeading.jsx";
-import { ToastContainer, toast } from 'react-toastify';
+import { IdentificationCard, GenderIntersex, EnvelopeSimple } from "@phosphor-icons/react";
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/UserPage.css';
-import { GenderIntersex, EnvelopeSimple, IdentificationCard } from "@phosphor-icons/react";
 
 const UserPage = () => {
     const { userId } = useParams();
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
+    const [editedUser, setEditedUser] = useState({});
+    const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [isEditing, setIsEditing] = useState(false);
-    const [editedUser, setEditedUser] = useState({ name: '', gender: '', email: '' });
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -29,23 +30,22 @@ const UserPage = () => {
                 console.error('Error fetching user data:', error);
                 setError(error.message);
             } finally {
-                setLoading(false);
+                setTimeout(() => {
+                    setLoading(false);
+                }, 2000);
             }
         };
 
         fetchUserData();
     }, [userId]);
 
-    const handleEditClick = () => {
-        setIsEditing(true);
-    };
-
+    const handleEditClick = () => setIsEditing(true);
     const handleSaveClick = async () => {
         try {
             await updateUser(userId, editedUser);
             setUser(editedUser);
             setIsEditing(false);
-            toast.success('User details updated successfully', {
+            toast.success('User updated successfully', {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -88,7 +88,7 @@ const UserPage = () => {
             });
             setTimeout(() => {
                 navigate('/');
-            }, 3000);
+            }, 1000);
         } catch (error) {
             console.error('Error deleting user:', error);
             toast.error('Error deleting user: ' + error.message, {

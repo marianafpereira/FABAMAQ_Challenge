@@ -17,6 +17,8 @@ const UserPostsCommentsPage = () => {
     const [posts, setPosts] = useState([]);
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [loadingPosts, setLoadingPosts] = useState(true);
+    const [loadingComments, setLoadingComments] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -34,14 +36,18 @@ const UserPostsCommentsPage = () => {
             try {
                 const postsData = await getPosts(userId);
                 setPosts(postsData);
+                setLoadingPosts(false);
 
                 const commentsData = await Promise.all(postsData.map(post => getComments(post.id)));
                 setComments(commentsData.flat());
+                setLoadingComments(false);
             } catch (error) {
                 console.error('Error fetching posts and comments:', error);
                 setError(error.message);
             } finally {
-                setLoading(false);
+                setTimeout(() => {
+                    setLoading(false);
+                }, 1000);
             }
         };
 
@@ -51,6 +57,10 @@ const UserPostsCommentsPage = () => {
 
     if (error) {
         return <ErrorPage customError={error} />;
+    }
+
+    if (loading) {
+        return <Loading />;
     }
 
     return (
@@ -65,7 +75,7 @@ const UserPostsCommentsPage = () => {
             </div>
             <div className="user-details-container">
                 <h2><CheckCircle weight="duotone" color="var(--primary-color)" size={24} /> Posts</h2>
-                {loading ? (
+                {loadingPosts ? (
                     <Loading />
                 ) : posts.length > 0 ? (
                     <ul>
@@ -82,7 +92,7 @@ const UserPostsCommentsPage = () => {
             </div>
             <div className="user-details-container">
                 <h2><CheckCircle weight="duotone" color="var(--primary-color)" size={24} /> Comments</h2>
-                {loading ? (
+                {loadingComments ? (
                     <Loading />
                 ) : comments.length > 0 ? (
                     <ul>
