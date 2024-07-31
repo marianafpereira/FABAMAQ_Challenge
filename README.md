@@ -17,8 +17,8 @@ To run this application locally, follow these steps:
 ## Features
 1. User Listing: View a list of users with the ability to search and filter.
 2. CRUD Operations: Create, read, update, and delete users.
-3. User Details Page: View detailed information about a user, including their posts and comments.
-4. User Statistics: View statistics related to the user, such as the number of posts and comments.
+3. User Details Page: View detailed information about a user.
+4. User Posts And Comments Page: View posts and comments from user including their statistics related to the user, such as the number of posts and comments.
 
 ## Technologies Used
 - React: For building the user interface.
@@ -38,24 +38,24 @@ Thank you for reviewing my application. If you have any questions, please feel f
 ## Project Structure and Explanation
 
 ### Components
+- **BaseLayout**: Contains `BaseLayout.jsx` and the `Content.jsx`. This `BaseLayout.jsx` component is used to provide a consistent layout for pages, including a header and main content area. The `Content.jsx` component is used to display a section with a heading and optional buttons.
 - **Breadcrumb**: Contains `Breadcrumb.jsx` and `Breadcrumb.css`. This component is used to display the navigation path (breadcrumbs) for the user.
 - **Footer**: Contains `Footer.jsx`. This component is used to display the footer of the application.
 - **Headings**: Contains `TitleHeading.jsx`, `TitleHeading.css`, and `SectionHeading.jsx`. These components are used to display various headings and titles throughout the application.
-- **Loading**: Contains `Loading.jsx`. This component is used to display a loading spinner or message when data is being fetched.
+- **Loading**: Contains `Loading.jsx` and the `loading.module.css`. This component is used to display a loading spinner or message when data is being fetched.
 - **SearchBar**: Contains `SearchBar.jsx` and `SearchBar.css`. This component is used to display a search bar for searching users.
+- **UserList**: Contains `UserList.jsx`. This component is used to display a list of users with search and filter functionality.
 - **UserStatistics**: Contains `UserStatistics.jsx`. This component is used to display statistics related to users, such as the number of posts and comments.
--**BaseLayout**: Contains `BaseLayout.jsx` and the `Content.jsx`. This `BaseLayout.jsx` component is used to provide a consistent layout for pages, including a header and main content area. The `Content.jsx` component is used to display a section with a heading and optional buttons.
-- **UserList**: Contains UserList.jsx. This component is used to display a list of users with search and filter functionality.
 
 ### Data
 - **urls.js**: Contains constants for the API base URL and API key.
 
 ### Pages
+- **HomePage.jsx**: This page is the landing page of the application. It provides an overview and navigation to other parts of the application.
 - **NewUserPage.jsx**: This page is used to create a new user. It contains a form for entering user details and handles form submission.
 - **UserPage.jsx**: This page displays the details of a specific user. It allows editing and deleting the user and displays user details such as name, gender, and email.
 - **UserPostsCommentsPage.jsx**: This page displays the posts and comments of a specific user. It fetches and displays the user's posts and comments and provides statistics on the number of posts and comments.
 - **ErrorPage.jsx**: This page is displayed when an error occurs. It shows an error message to the user.
-- **HomePage.jsx**: This page is the landing page of the application. It provides an overview and navigation to other parts of the application.
 - **LoadingPage.jsx**: This page is displayed when the application is loading data. It shows a loading spinner or message.
 
 ### Router
@@ -76,12 +76,8 @@ Thank you for reviewing my application. If you have any questions, please feel f
 - **UserPage.css**: Contains styles specific to the UserPage component.
 - **NewUserPage.css**: Contains styles specific to the NewUserPage component.
 - **UserPostsCommentsPage.css**: Contains styles specific to the UserPostsCommentsPage component.
-- **SearchBar.css**: Contains styles specific to the SearchBar component.
-- **TitleHeading.css**: Contains styles specific to the TitleHeading component.
-- **Breadcrumb.css**: Contains styles specific to the Breadcrumb component.
 - **HomePage.css**: Contains styles specific to the HomePage component.
 - **layout.css**: Contains styles for the overall layout of the application.
-- **loading.module.css**: Contains styles specific to the loading spinner component.
 - **nav.css**: Contains styles for the navigation elements.
 - **reset.css**: Contains CSS reset styles to ensure consistency across browsers.
 - **status.module.css**: Contains styles specific to the status and error pages.
@@ -100,29 +96,31 @@ Thank you for reviewing my application. If you have any questions, please feel f
 
 ### NewUserPage.jsx
 - **Purpose**: To create a new user.
-- **Components Used**: TitleHeading, Footer, ToastContainer and icons from `@phosphor-icons/react`.
+- **Components Used**: TitleHeading, Footer, Breadcrumbs, ToastContainer and icons from `@phosphor-icons/react`.
 - **Functionality**:
-    - Displays a form for entering user details (name, email, gender, status).
+    - Displays a form for entering user details (name, email, gender) The status is pre-defined as active.
     - Handles form submission and calls the handleSubmit function from `NewUserService.jsx`.
     - Displays success or error messages using `react-toastify`.
+    - - Provides navigation to the HomePage.
 
 ### UserPage.jsx
 - **Purpose**: To display and manage user details.
-- **Components Used**: TitleHeading, Footer, ToastContainer, Loading, SectionHeading and icons from `@phosphor-icons/react`.
+- **Components Used**: TitleHeading, Footer, ToastContainer, Breadcrumbs, Loading, SectionHeading, ErrorPage and icons from `@phosphor-icons/react`.
 - **Functionality**:
     - Fetches and displays user details (name, gender, email).
     - Allows editing and deleting the user.
     - Displays success or error messages using `react-toastify`.
-    - Provides navigation to the user's posts and comments page.
+    - Provides navigation to the user's posts and comments page and also to the HomePage.
 
 ### UserPostsCommentsPage.jsx
 - **Purpose**: To display the posts and comments of a specific user.
-- **Components Used**: TitleHeading, Footer, Loading, SectionHeading, ErrorPage and icons from `@phosphor-icons/react`.
+- **Components Used**: TitleHeading, Footer, Loading, Breadcrumbs, SectionHeading, ErrorPage and icons from `@phosphor-icons/react`.
 - **Functionality**:
     - Fetches and displays the user's posts and comments.
     - Provides statistics on the number of posts and comments.
     - Displays loading spinner while fetching data.
     - Handles and displays errors if data fetching fails.
+    - - Provides navigation to the user's details page and also to the HomePage.
 
 ### ErrorPage.jsx
 - **Purpose**: To display an error message when an error occurs.
@@ -133,7 +131,7 @@ Thank you for reviewing my application. If you have any questions, please feel f
 
 ### HomePage.jsx
 - **Purpose**: To serve as the landing page of the application.
-- **Components Used**: TitleHeading, Footer, SearchBar and icons from `@phosphor-icons/react`.
+- **Components Used**: SectionHeading, Footer, BaseLayout, SearchBar, UserList, Loading, ErrorPage and icons from `@phosphor-icons/react`.
 - **Functionality**:
     - Provides an overview of the application.
     - Allows navigation to other parts of the application.
